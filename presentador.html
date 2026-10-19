@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentador — Panel de control</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/diapositivas.css">
+  <link rel="stylesheet" href="css/presentador.css">
+</head>
+<body class="vista-presentador">
+
+  <!-- ===================== Cabecera ===================== -->
+  <header class="cabecera">
+    <h1 class="cabecera__titulo">Panel del <span>Presentador</span></h1>
+    <div class="cabecera__coords" id="coordenadas"><b>—</b></div>
+    <div class="cabecera__acciones">
+      <button class="btn" id="abrirAudiencia" type="button">Abrir Audiencia</button>
+      <button class="btn" id="btnClicLumina" type="button" title="Reproduce el clic del botoncito de la Wand">🔊 Clic Lumina</button>
+      <button class="btn btn--principal" id="btnEmpezar" type="button">Empezar cronómetro</button>
+    </div>
+  </header>
+
+  <!-- ============== Zona 1 + Zona 2: vistas y mapa ============== -->
+  <main class="tablero">
+
+    <!-- a) Vista previa: actual y siguiente -->
+    <section class="vistas" aria-label="Vista previa de diapositivas">
+      <article class="vista vista--actual">
+        <span class="etiqueta">Diapositiva actual</span>
+        <div class="vista__lienzo" id="lienzoActual"></div>
+      </article>
+
+      <div class="vistas__siguientes">
+        <article class="vista" id="vistaSiguiente1" hidden>
+          <span class="etiqueta" id="etiqueta1"><span class="etiqueta__tecla">—</span> Siguiente</span>
+          <div class="vista__lienzo" id="lienzoSiguiente1"></div>
+        </article>
+
+        <article class="vista" id="vistaSiguiente2" hidden>
+          <span class="etiqueta" id="etiqueta2"><span class="etiqueta__tecla">—</span> Siguiente</span>
+          <div class="vista__lienzo" id="lienzoSiguiente2"></div>
+        </article>
+
+        <p class="vista__fin" id="finMensaje" hidden>Fin de la presentación.</p>
+      </div>
+    </section>
+
+    <!-- b) Mapa general 2D -->
+    <section class="panel mapa" aria-label="Mapa general de diapositivas">
+      <div class="panel__cabecera">
+        <h2 class="panel__titulo">Mapa general</h2>
+        <span class="panel__titulo" id="dimensiones">—</span>
+      </div>
+      <div class="mapa__rejilla" id="rejilla"></div>
+    </section>
+
+  </main>
+
+  <!-- ============== Zona 3: guion y cronómetro ============== -->
+  <footer class="guion">
+    <section class="guion__notas" aria-label="Guion del orador">
+      <div class="panel__cabecera">
+        <h2 class="panel__titulo">Guion / Notas del orador</h2>
+        <span class="panel__titulo" id="tituloDiapositiva">—</span>
+      </div>
+      <div class="guion__texto vacio" id="notas">Cargando…</div>
+    </section>
+
+    <section class="cronometro" aria-label="Cronómetro">
+      <div class="cronometro__tiempo" id="tiempo" role="timer" aria-live="off">00:00</div>
+      <div class="cronometro__estado" id="estadoCronometro">Detenido</div>
+      <div class="cronometro__botones">
+        <button class="btn" id="btnIniciar" type="button">Iniciar</button>
+        <button class="btn" id="btnPausar" type="button">Pausar</button>
+        <button class="btn" id="btnReiniciar" type="button">Reiniciar</button>
+      </div>
+    </section>
+  </footer>
+
+  <!-- Carga inicial -->
+  <div class="overlay" id="cargando">
+    <div class="pulso" aria-hidden="true"></div>
+    <p class="overlay__titulo">Cargando diapositivas…</p>
+  </div>
+
+  <div class="overlay overlay--error" id="error" hidden>
+    <p class="overlay__titulo">No se pudieron cargar las diapositivas</p>
+    <p class="overlay__detalle" id="errorDetalle"></p>
+  </div>
+
+  <noscript>
+    <div class="overlay overlay--error">
+      <p class="overlay__titulo">JavaScript no está habilitado</p>
+      <p class="overlay__detalle">Este panel necesita JavaScript para funcionar.</p>
+    </div>
+  </noscript>
+
+  <script src="cargar-diapositivas.js"></script>
+  <script src="sincronizador.js"></script>
+  <script src="sonido.js"></script>
+  <script src="presentador.js"></script>
+</body>
+</html>

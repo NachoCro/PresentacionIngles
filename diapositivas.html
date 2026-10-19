@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Diapositivas — Three Revolutionary Devices in One</title>
+  <!--
+    ======================================================================
+    CONTENIDO MODULAR DE DIAPOSITIVAS
+    ======================================================================
+    Presentación: "Three Revolutionary Devices in One" — Lumina Wand
+    Guion para dos oradores (A y B).
+
+    FILOSOFÍA DE ESTAS DIAPOSITIVAS:
+    · El slide es AYUDA VISUAL, no texto: frases cortísimas, cifras
+      gigantes, tarjetas, chips y la foto del producto (img/lumina-wand.jpg).
+    · El diálogo completo A/B va DENTRO de <aside class="notes"> — solo
+      lo lee el panel del presentador, nunca se proyecta.
+    · Los componentes visuales (dw-*) viven en css/diapositivas.css.
+
+    ESTRUCTURA ESTRICTA (no romper):
+      <div class="horizontal-topic">          ← Tema principal (eje X)
+        <section class="slide">               ← Sub-diapositiva (eje Y)
+          <div class="content">               ← Visible para la audiencia
+            ...
+          </div>
+          <aside class="notes">...</aside>    ← Guion del orador (oculto)
+        </section>
+      </div>
+
+    MAPA DE LA PRESENTACIÓN
+      X=0 Introducción y el problema   (Y 0-3)
+      X=1 Descripción del producto     (Y 0-1)
+      X=2 Usos y selling points        (Y 0-3)
+      X=3 Beneficios                   (Y 0-1)
+      X=4 Preguntas                    (Y 0)
+    ======================================================================
+  -->
+</head>
+<body>
+
+  <!-- ==================== TEMA 1 (X = 0): INTRODUCCIÓN Y EL PROBLEMA ==================== -->
+  <div class="horizontal-topic">
+    <!-- Y = 0 — 1. Introducing the product -->
+    <section class="slide">
+      <div class="content dw-center">
+        <h2 class="dw-title">Three Revolutionary Devices in One</h2>
+      </div>
+      <aside class="notes">
+        ESCENA: Los dos se paran en el centro, uno al lado del otro.
+        B tiene el marcador escondido en el bolsillo.
+
+        A: "Good morning, everyone.
+           Every once in a while, a revolutionary product comes along and changes everything."
+        B: "Today, we're going to tell you about our new product."
+
+        Consejo: sonar seguro y hacer una pausa breve tras "changes
+        everything". Mirar a la profesora, no a la pantalla.
+      </aside>
+    </section>
+
+    <!-- Y = 1 — 2. The problem (efecto Jobs) -->
+    <section class="slide">
+      <div class="content">
+        <span class="dw-kicker">The problem</span>
+        <h2>Three clumsy tools</h2>
+        <div class="dw-cards">
+          <div class="dw-card dw-card--mal">
+            <div class="dw-card__icon">🖱️</div>
+            <div class="dw-card__title">Wired mouse</div>
+            <div class="dw-card__sub">Trapped behind your desk</div>
+          </div>
+          <div class="dw-card dw-card--mal">
+            <div class="dw-card__icon">🔦</div>
+            <div class="dw-card__title">Cheap laser pointer</div>
+            <div class="dw-card__sub">Invisible from the back row</div>
+          </div>
+          <div class="dw-card dw-card--mal">
+            <div class="dw-card__icon">📱</div>
+            <div class="dw-card__title">Phone timer</div>
+            <div class="dw-card__sub">Interrupts your train of thought</div>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        A: "Right now, teachers use three clumsy tools to survive one class.
+           First: a mouse with a cable, which keeps you trapped behind your desk."
+        B: "Second: a cheap laser pointer, which is invisible from the back row.
+           Third: a phone timer, which interrupts your train of thought."
+
+        Consejo: marcar con la voz "First", "Second", "Third" y señalar la
+        tarjeta de la pantalla con cada punto. Efecto Jobs: describir el
+        problema con dramatismo antes de la solución.
+      </aside>
+    </section>
+
+    <!-- Y = 2 — La solución -->
+    <section class="slide">
+      <div class="content">
+        <span class="dw-kicker">One tool solves all three</span>
+        <h2>The solution</h2>
+        <div class="dw-cards">
+          <div class="dw-card dw-card--bien">
+            <div class="dw-card__icon">📡</div>
+            <div class="dw-card__title">Wireless remote</div>
+          </div>
+          <div class="dw-card dw-card--bien">
+            <div class="dw-card__icon">🎯</div>
+            <div class="dw-card__title">Digital pointer</div>
+          </div>
+          <div class="dw-card dw-card--bien">
+            <div class="dw-card__icon">⏳</div>
+            <div class="dw-card__title">Silent timer</div>
+          </div>
+        </div>
+        <p class="dw-tagline">Are you getting it?</p>
+      </div>
+      <aside class="notes">
+        A: "A wireless remote."
+        B: "A digital pointer."
+        A: "A silent timer."
+
+        (Pausa de 2 segundos. Los dos miran a la profesora.)
+        B: "Are you getting it?"
+
+        Consejo: una frase por punto, mirando a la tarjeta que toca.
+        La pausa de 2 segundos es obligatoria: sostener la mirada en
+        silencio antes de "Are you getting it?".
+      </aside>
+    </section>
+
+    <!-- Y = 3 — El nombre del producto -->
+    <section class="slide">
+      <div class="content content--ancho dw-reveal">
+        <figure class="dw-figure dw-figure--big">
+          <video src="media/lumina-wand.mp4" poster="img/lumina-wand.jpg"
+                 autoplay muted loop playsinline preload="metadata"
+                 aria-label="The Lumina Wand in action"></video>
+        </figure>
+        <div>
+          <span class="dw-kicker">This is one device</span>
+          <h2 class="dw-title">The Lumina Wand</h2>
+        </div>
+      </div>
+      <aside class="notes">
+        A: "These are not three devices."
+        B: "This is one device."
+        A y B (juntos): "And we call it... the Lumina Wand!"
+
+        ACCIÓN: B saca el marcador del bolsillo y lo levanta en alto justo
+        en la frase final.
+        Consejo: decir "the Lumina Wand" con energía y sonreír; los dos a
+        la vez, sincronizados.
+      </aside>
+    </section>
+  </div>
+
+  <!-- ==================== TEMA 2 (X = 1): DESCRIPCIÓN DEL PRODUCTO ==================== -->
+  <div class="horizontal-topic">
+    <!-- Y = 0 — 3. Describing the product (A) -->
+    <section class="slide">
+      <div class="content content--ancho dw-split">
+        <div class="dw-stat">
+          <div class="dw-stat__num">40 g</div>
+          <div class="dw-stat__label">Aluminium · light &amp; strong</div>
+        </div>
+        <figure class="dw-figure">
+          <img src="img/lumina-wand.jpg" alt="Lumina Wand held in hand">
+        </figure>
+      </div>
+      <aside class="notes">
+        A: "Let me tell you about its special features.
+           It's made of aluminium, so it's light but strong.
+           It weighs approximately 40 grams."
+
+        ACCIÓN: si B sigue sosteniendo la Wand, hacerla girar entre los
+        dedos al decir "light".
+        Consejo: hablar despacio; las especificaciones se dicen con calma.
+      </aside>
+    </section>
+
+    <!-- Y = 1 — 3. Describing the product (B) -->
+    <section class="slide">
+      <div class="content content--ancho dw-split">
+        <div class="dw-stat">
+          <div class="dw-stat__num">14 × 2 × 2</div>
+          <div class="dw-stat__label">centimetres · fits in your palm</div>
+        </div>
+        <div>
+          <span class="dw-kicker">Colours</span>
+          <div class="dw-swatches">
+            <div class="dw-swatch"><i style="background:#14171c"></i>Black</div>
+            <div class="dw-swatch"><i style="background:#c9ced8"></i>Silver</div>
+            <div class="dw-swatch"><i style="background:#2f6bff"></i>Blue</div>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        B: "Its dimensions are: 14 centimetres long, 2 wide and 2 deep.
+           It fits right in your palm.
+           It comes in a wide range of colours: black, silver and blue."
+
+        ACCIÓN: abrir la mano para mostrar cómo cabe.
+        Consejo: "fits right in your palm" con gesto cerrado de puño.
+      </aside>
+    </section>
+  </div>
+
+  <!-- ==================== TEMA 3 (X = 2): USOS Y SELLING POINTS ==================== -->
+  <div class="horizontal-topic">
+    <!-- Y = 0 — 4. Stating the product's uses (A) -->
+    <section class="slide">
+      <div class="content dw-center">
+        <span class="dw-kicker">Who is it for?</span>
+        <h2>Ideal for</h2>
+        <div class="dw-chips" style="justify-content:center">
+          <span class="dw-chip dw-chip--acento">🧑‍🏫 Teachers</span>
+          <span class="dw-chip dw-chip--acento">🎤 Speakers</span>
+          <span class="dw-chip dw-chip--acento">🎓 Students</span>
+        </div>
+        <p class="dw-tagline">Any classroom or meeting room.</p>
+      </div>
+      <aside class="notes">
+        A: "It's ideal for teachers, speakers and students.
+           It's designed to be used in any classroom or meeting room."
+
+        Consejo: al decir "teachers", mirar a la profesora.
+      </aside>
+    </section>
+
+    <!-- Y = 1 — 4. Stating the product's uses (B) -->
+    <section class="slide">
+      <div class="content">
+        <span class="dw-kicker">What is it for?</span>
+        <h2>Perfect for</h2>
+        <div class="dw-cards dw-cards--2">
+          <div class="dw-card">
+            <div class="dw-card__icon">🎤</div>
+            <div class="dw-card__title">Presentations</div>
+          </div>
+          <div class="dw-card">
+            <div class="dw-card__icon">⏱️</div>
+            <div class="dw-card__title">Controlling your time</div>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        B: "It's perfect for giving presentations and for controlling your time."
+
+        Consejo: frases cortas, ritmo ágil; es el puente hacia los
+        selling points.
+      </aside>
+    </section>
+
+    <!-- Y = 2 — 5. Listing selling points (alcance y puntero) -->
+    <section class="slide">
+      <div class="content content--ancho dw-split">
+        <div class="dw-stat">
+          <div class="dw-stat__num">30 m</div>
+          <div class="dw-stat__label">Working range</div>
+        </div>
+        <div class="dw-panel">
+          <div class="dw-card__icon">🎯</div>
+          <p class="dw-tagline">Digital pointer.<br>Key points. <strong>No glare.</strong></p>
+        </div>
+      </div>
+      <aside class="notes">
+        A: "What about its main selling points?
+           It has several special features.
+           It works from 30 metres away."
+        B: "Its digital pointer highlights the key points on the screen, with no glare."
+
+        Consejo: "30 metres" en voz alta y con énfasis: es el dato que
+        más impresiona en un aula.
+      </aside>
+    </section>
+
+    <!-- Y = 3 — 5. Listing selling points (temporizador y valor) -->
+    <section class="slide">
+      <div class="content content--ancho dw-split">
+        <div class="dw-stat">
+          <div class="dw-stat__num">5 min</div>
+          <div class="dw-stat__label">Gentle vibration warning</div>
+        </div>
+        <div class="dw-panel">
+          <div class="dw-card__icon">🤫</div>
+          <div class="dw-chips">
+            <span class="dw-chip dw-chip--acento">Quiet</span>
+            <span class="dw-chip dw-chip--acento">Energy-saving</span>
+            <span class="dw-chip dw-chip--acento">Great value</span>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        B: "And its silent timer gives a gentle vibration when you have 5 minutes left."
+        A: "It's quiet, it's energy-saving, and it's great value for money."
+
+        ACCIÓN: B puede vibrar la Wand suavemente sobre la palma al decir
+        "gentle vibration".
+        Consejo: los tres adjetivos de A ("quiet, energy-saving, great
+        value") con ritmo de lista: uno, dos, tres — señalando cada chip.
+      </aside>
+    </section>
+  </div>
+
+  <!-- ==================== TEMA 4 (X = 3): BENEFICIOS ==================== -->
+  <div class="horizontal-topic">
+    <!-- Y = 0 — 6. Referring to benefits (B) -->
+    <section class="slide">
+      <div class="content dw-center">
+        <span class="dw-kicker">Benefits</span>
+        <h2>Why teachers love it</h2>
+        <ul class="dw-checks" style="text-align:left; max-width:26em; margin-inline:auto">
+          <li>Saves you time</li>
+          <li>Easy to use</li>
+          <li>Look professional</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        B: "It saves teachers time.
+           It's easy to use.
+           It makes the user look professional."
+
+        Consejo: decir los tres beneficios mirando al público, con la
+        palma abierta hacia arriba (gesto de oferta); marcar cada check
+        con la mano.
+      </aside>
+    </section>
+
+    <!-- Y = 1 — 6. Referring to benefits (A) + cierre -->
+    <section class="slide">
+      <div class="content dw-center">
+        <span class="dw-kicker">Freedom</span>
+        <h2>Unchained</h2>
+        <blockquote class="dw-quote">Great teachers shouldn't be trapped behind a desk.</blockquote>
+        <p class="dw-tagline">Professor… it's time to take back your classroom.</p>
+      </div>
+      <aside class="notes">
+        A: "And it gives you freedom: great teachers shouldn't be trapped behind a desk."
+
+        (Los dos miran a la profesora.)
+        A y B (juntos): "Professor... it's time to take back your classroom."
+
+        Consejo: frase final con calma y peso; los dos juntos, a la vez,
+        mirando directamente a la profesora. Después, silencio breve.
+      </aside>
+    </section>
+  </div>
+
+  <!-- ==================== TEMA 5 (X = 4): PREGUNTAS ==================== -->
+  <div class="horizontal-topic">
+    <!-- Y = 0 — 7. Inviting questions -->
+    <section class="slide">
+      <div class="content dw-center">
+        <span class="dw-kicker">Q &amp; A</span>
+        <h2 class="dw-title">Thank you.</h2>
+        <p class="dw-tagline">👋 Does anyone have any questions?</p>
+      </div>
+      <aside class="notes">
+        B: "Thank you."
+        A: "Does anyone have any questions?"
+
+        Consejo: sonreír, bajar la mano y abrir la palma hacia el público
+        para invitar a preguntar. Mantener la mirada en la profesora
+        mientras espera la primera pregunta.
+      </aside>
+    </section>
+  </div>
+
+</body>
+</html>

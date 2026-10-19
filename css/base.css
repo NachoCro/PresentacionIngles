@@ -1,0 +1,270 @@
+/*!
+ * base.css — Diseño base compartido (tokens, reset y estilos de .slide)
+ * Lo usan tanto index.html como presentador.html.
+ */
+
+:root {
+  /* Paleta — Grafito profundo + "Lumina" */
+  --fondo: #0D0D0E;         /* Negro profundo / grafito */
+  --panel: #1C1C1E;         /* Gris oscuro mate (tarjetas) */
+  --panel-alto: #232326;
+  --borde: rgba(255, 255, 255, 0.09);
+  --tinta: #F5F5F7;         /* Blanco humo / off-white */
+  --tinta-tenue: #9A9AA1;
+  --acento: #0071E3;        /* Azul eléctrico / tech */
+  --acento-2: #00F5D4;      /* Verde neón — resaltar palabras clave */
+  --ok: #2fd58a;
+  --alerta: #ff6b8a;
+
+  /* Medida de viewport que respeta la barra de navegación en móvil */
+  --vh: 100vh;
+
+  /* Tipografía */
+  --fuente: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --fuente-mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
+
+  --radio: 16px;
+  --sombra: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+@supports (height: 100dvh) {
+  :root { --vh: 100dvh; }
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--fuente);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button { font: inherit; color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+/* Botones genéricos ------------------------------------------------ */
+.btn {
+  appearance: none;
+  border: 1px solid var(--borde);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--tinta);
+  padding: 0.6em 1.15em;
+  border-radius: 11px;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.12s ease, opacity 0.2s ease;
+}
+.btn:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.22); }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.btn:disabled { opacity: 0.35; cursor: default; transform: none; }
+
+.btn--principal {
+  background: linear-gradient(135deg, var(--acento), #00B4FF);
+  border-color: transparent;
+  font-weight: 600;
+}
+.btn--principal:hover { background: linear-gradient(135deg, var(--acento), #00B4FF); filter: brightness(1.12); }
+
+/* Overlays de carga / error ---------------------------------------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 32px;
+  text-align: center;
+  background: var(--fondo);
+}
+.overlay[hidden] { display: none; }
+.overlay__titulo { font-size: clamp(20px, 3vw, 30px); font-weight: 650; letter-spacing: -0.01em; }
+.overlay__detalle {
+  max-width: 680px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--tinta-tenue);
+}
+.overlay__detalle code {
+  font-family: var(--fuente-mono);
+  font-size: 0.92em;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 1px 7px;
+}
+.overlay--error .overlay__titulo { color: var(--alerta); }
+
+.pulso {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--acento);
+  animation: girar 0.9s linear infinite;
+}
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* ================================================================== */
+/* DIAPOSITIVA (.slide)                                               */
+/* Se diseña a 1280 × 720 px (en el presentador se escala con         */
+/* transform) y usa unidades de contenedor (cqw) para llenar la       */
+/* pantalla completa en la vista de audiencia.                        */
+/* ================================================================== */
+.slide {
+  container-type: size;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(158deg, #17171a 0%, #111113 52%, #0D0D0E 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* Resplandor del acento del tema */
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background:
+    radial-gradient(70% 85% at 12% 8%, var(--acento), transparent 62%),
+    radial-gradient(60% 75% at 92% 96%, var(--acento), transparent 66%);
+}
+
+/* Retícula sutil */
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(115% 95% at 50% 42%, #000 35%, transparent 78%);
+  mask-image: radial-gradient(115% 95% at 50% 42%, #000 35%, transparent 78%);
+}
+
+/* Acento por tema (data-tema lo asigna cargar-diapositivas.js)
+   Paleta Lumina: todos los temas usan el mismo azul eléctrico;
+   el verde neón (#00F5D4) se reserva para resaltar palabras clave. */
+.slide[data-tema="0"] { --acento: #0071E3; }
+.slide[data-tema="1"] { --acento: #0071E3; }
+.slide[data-tema="2"] { --acento: #0071E3; }
+.slide[data-tema="3"] { --acento: #0071E3; }
+.slide[data-tema="4"] { --acento: #0071E3; }
+
+/* Contenido --------------------------------------------------------- */
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(1080px, 84cqw);
+  padding: 4cqw;
+}
+
+.content h2 {
+  margin: 0 0 0.42em;
+  font-size: 5.4vw;      /* fallback si no hay cqw */
+  font-size: 5.4cqw;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  font-weight: 720;
+  color: var(--tinta);
+  text-wrap: balance;
+}
+.content h2::after {
+  content: "";
+  display: block;
+  width: 3.4em;
+  height: 0.115em;
+  margin-top: 0.42em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--acento), transparent);
+}
+
+.content p {
+  margin: 0;
+  font-size: 2.3vw;      /* fallback si no hay cqw */
+  font-size: 2.3cqw;
+  line-height: 1.55;
+  color: var(--tinta-tenue);
+  max-width: 62ch;
+}
+.content p strong { color: var(--tinta); font-weight: 650; }
+
+.content ul {
+  margin: 1.1em 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55em;
+}
+.content li {
+  position: relative;
+  padding-left: 1.15em;
+  font-size: 2.1vw;
+  font-size: 2.1cqw;
+  line-height: 1.45;
+  color: var(--tinta);
+}
+.content li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background: var(--acento);
+  box-shadow: 0 0 12px var(--acento);
+}
+
+/* El guion del orador NUNCA se ve en pantalla */
+aside.notes { display: none; }
+
+/* Slides en miniatura (vista previa / mapa) ------------------------- */
+.marco-escala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  overflow: hidden;
+  background: var(--fondo);
+}
+.marco-escala .slide { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Accesibilidad: respetar menos movimiento -------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+}

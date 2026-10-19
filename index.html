@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audiencia — Presentación</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/diapositivas.css">
+  <link rel="stylesheet" href="css/audiencia.css">
+</head>
+<body class="vista-audiencia">
+
+  <!-- Escenario 2D: aquí se montan los temas y sus sub-diapositivas.
+       La audiencia muestra SOLO la diapositiva: sin HUD ni botones.
+       Se navega con flechas del teclado o gestos de deslizar. -->
+  <div class="escenario" id="escenario" aria-live="polite"></div>
+
+  <!-- Carga inicial -->
+  <div class="overlay" id="cargando">
+    <div class="pulso" aria-hidden="true"></div>
+    <p class="overlay__titulo">Cargando diapositivas…</p>
+  </div>
+
+  <div class="overlay overlay--error" id="error" hidden>
+    <p class="overlay__titulo">No se pudieron cargar las diapositivas</p>
+    <p class="overlay__detalle" id="errorDetalle"></p>
+  </div>
+
+  <noscript>
+    <div class="overlay overlay--error">
+      <p class="overlay__titulo">JavaScript no está habilitado</p>
+      <p class="overlay__detalle">Esta presentación necesita JavaScript para navegar y sincronizarse.</p>
+    </div>
+  </noscript>
+
+  <script src="cargar-diapositivas.js"></script>
+  <script src="sincronizador.js"></script>
+  <script src="audiencia.js"></script>
+</body>
+</html>

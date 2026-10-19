@@ -1,0 +1,283 @@
+/*!
+ * diapositivas.css — Componentes visuales de diapositivas.html
+ * ------------------------------------------------------------
+ * Filosofía: las diapositivas son AYUDA VISUAL del guion, no texto.
+ * Poco palabras, mucho impacto: kickers, tarjetas, cifras gigantes,
+ * chips, citas y fotos del producto.
+ *
+ * Todo usa unidades de contenedor (cqw) con fallback a vw, igual
+ * que base.css, para que escale igual en proyección y miniaturas.
+ */
+
+/* ============ Utilidades de texto ============ */
+.dw-kicker {
+  display: block;
+  margin: 0 0 1.1cqw;
+  font-size: 1.5vw;
+  font-size: 1.5cqw;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--acento-2);   /* Verde neón: brilla sobre el grafito */
+}
+
+.content h2.dw-title {
+  font-size: 4.6vw;
+  font-size: 4.6cqw;
+}
+
+.dw-lead,
+.dw-sub {
+  margin-top: 1.6cqw;
+  font-size: 2.4vw;
+  font-size: 2.4cqw;
+  color: var(--tinta-tenue);
+}
+
+.dw-tagline {
+  margin-top: 2.2cqw;
+  font-size: 2.8vw;
+  font-size: 2.8cqw;
+  font-weight: 720;
+  color: var(--tinta);
+  letter-spacing: -0.015em;
+}
+
+/* Slide centrado */
+.dw-center { text-align: center; }
+.dw-center h2::after { margin-inline: auto; }
+.dw-center .dw-kicker { text-align: center; }
+
+/* ============ Layouts ============ */
+.content--ancho { width: min(1180px, 92cqw); }
+
+.dw-split,
+.dw-reveal {
+  display: grid;
+  gap: 4cqw;
+  align-items: center;
+}
+.dw-split  { grid-template-columns: 1fr 1fr; }
+.dw-reveal { grid-template-columns: 0.9fr 1.1fr; }
+
+/* ============ Foto del producto ============ */
+.dw-figure {
+  position: relative;
+  margin: 0;
+  padding: 1.2cqw;
+  border-radius: 24px;
+  border: 1px solid var(--borde);
+  background:
+    radial-gradient(80% 70% at 50% 18%, rgba(255, 255, 255, 0.10), transparent 70%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  box-shadow: var(--sombra), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  display: flex;
+  justify-content: center;
+}
+.dw-figure img,
+.dw-figure video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 46cqw;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  animation: dw-flotar 7s ease-in-out infinite;
+}
+.dw-figure--big img,
+.dw-figure--big video { max-height: 54cqw; }
+
+@keyframes dw-flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1.4cqw); }
+}
+
+/* ============ Tarjetas ============ */
+.dw-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2cqw;
+  margin-top: 2.8cqw;
+}
+.dw-cards--2 { grid-template-columns: repeat(2, 1fr); }
+
+.dw-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.9cqw;
+  padding: 2.6cqw 1.6cqw;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--panel);   /* Gris oscuro mate */
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.9);
+}
+.dw-card__icon {
+  font-size: 5cqw;
+  line-height: 1;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.5));
+}
+.dw-card__title {
+  font-size: 2.3vw;
+  font-size: 2.3cqw;
+  font-weight: 720;
+  color: var(--tinta);
+}
+.dw-card__sub {
+  font-size: 1.5vw;
+  font-size: 1.5cqw;
+  line-height: 1.4;
+  color: var(--tinta-tenue);
+}
+
+.dw-card--mal {
+  border-color: rgba(255, 107, 138, 0.35);
+  background: #1C1C1E;
+}
+.dw-card--mal .dw-card__title { color: var(--alerta); }
+
+/* Tarjetas de la solución: las palabras clave BRILLAN en neón */
+.dw-card--bien {
+  border-color: rgba(0, 245, 212, 0.5);
+  background: linear-gradient(180deg, rgba(0, 245, 212, 0.10), rgba(0, 245, 212, 0.03));
+  box-shadow:
+    0 0 44px -14px rgba(0, 245, 212, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.dw-card--bien .dw-card__title {
+  color: #00F5D4;
+  text-shadow: 0 0 26px rgba(0, 245, 212, 0.55);
+}
+
+/* ============ Panel de cristal ============ */
+.dw-panel {
+  padding: 2.8cqw;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(165deg, #212124, #171719);  /* Gris oscuro mate */
+  box-shadow: 0 22px 50px -26px rgba(0, 0, 0, 0.95);
+}
+
+/* ============ Chips (etiquetas) ============ */
+.dw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4cqw;
+  margin-top: 2.4cqw;
+}
+.dw-chip {
+  padding: 0.7em 1.4em;
+  border-radius: 999px;
+  font-size: 2.4vw;
+  font-size: 2.4cqw;
+  font-weight: 650;
+  color: var(--tinta);
+  background: var(--panel);   /* Gris oscuro mate */
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.9);
+}
+.dw-chip--acento {
+  color: #00F5D4;
+  border-color: rgba(0, 245, 212, 0.55);
+  text-shadow: 0 0 22px rgba(0, 245, 212, 0.5);
+  box-shadow: 0 0 30px -12px rgba(0, 245, 212, 0.75);
+}
+
+/* ============ Cifras gigantes ============ */
+.dw-stat { text-align: center; }
+.dw-stat__num {
+  font-size: 13vw;
+  font-size: 13cqw;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  background: linear-gradient(160deg, #ffffff 20%, #00F5D4);  /* Blanco → neón */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dw-stat__label {
+  margin-top: 1.4cqw;
+  font-size: 1.7vw;
+  font-size: 1.7cqw;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+
+/* ============ Muestras de color ============ */
+.dw-swatches {
+  display: flex;
+  gap: 2.4cqw;
+  margin-top: 2.6cqw;
+}
+.dw-swatch {
+  display: grid;
+  gap: 0.9cqw;
+  justify-items: center;
+  font-size: 1.4vw;
+  font-size: 1.4cqw;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+.dw-swatch i {
+  width: 6.4cqw;
+  height: 6.4cqw;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+}
+
+/* ============ Lista de beneficios (✓) ============ */
+.content ul.dw-checks {
+  margin-top: 2.4cqw;
+  gap: 1.2cqw;
+}
+.content ul.dw-checks li {
+  padding-left: 1.7em;
+  font-size: 3vw;
+  font-size: 3cqw;
+  font-weight: 680;
+  color: var(--tinta);
+}
+.content ul.dw-checks li::before {
+  content: "✓";
+  top: 0;
+  width: auto;
+  height: auto;
+  background: none;
+  box-shadow: none;
+  color: #00F5D4;
+  text-shadow: 0 0 18px rgba(0, 245, 212, 0.6);
+  font-size: 0.95em;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+/* Palabras clave en verde neón (resalte "Lumina") */
+.content p strong,
+.content li strong {
+  color: #00F5D4;
+  font-weight: 680;
+  text-shadow: 0 0 22px rgba(0, 245, 212, 0.45);
+}
+
+/* ============ Cita ============ */
+.dw-quote {
+  margin: 2cqw 0 0;
+  padding-left: 0.6em;
+  border-left: 0.16em solid var(--acento);
+  font-size: 4.2vw;
+  font-size: 4.2cqw;
+  font-weight: 720;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  color: var(--tinta);
+  text-wrap: balance;
+}
+.dw-center .dw-quote {
+  border-left: 0;
+  padding-left: 0;
+}
